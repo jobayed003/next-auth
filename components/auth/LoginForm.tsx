@@ -41,12 +41,12 @@ export const LoginForm = () => {
 
     startTransition(() => {
       login(values).then((data) => {
-        setSuccess(data.success);
-        setError(data.error);
+        setSuccess(data?.success);
+        setError(data?.error);
       });
     });
   };
-
+  // https://youtu.be/1MTyCvS05V4?list=PLcCUfHZZ3WlTJ4bMMZyC7fwnYEZJgICrW&t=17298
   return (
     <CardWrapper
       headerLabel='Welcome back'
@@ -97,7 +97,9 @@ export const LoginForm = () => {
                         <Input {...field} disabled={isPending} placeholder='******' type='password' />
                       </FormControl>
                       <Button size='sm' variant='link' asChild className='px-0 font-normal'>
-                        <Link href='/auth/reset'>Forgot password?</Link>
+                        <Link href='/auth/reset' prefetch>
+                          Forgot password?
+                        </Link>
                       </Button>
                       <FormMessage />
                     </FormItem>
