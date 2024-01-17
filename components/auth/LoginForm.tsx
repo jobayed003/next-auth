@@ -40,13 +40,24 @@ export const LoginForm = () => {
     setSuccess('');
 
     startTransition(() => {
-      login(values).then((data) => {
-        setSuccess(data?.success);
-        setError(data?.error);
-      });
+      login(values)
+        .then((data) => {
+          if (data?.error) {
+            form.reset();
+            setError(data?.error);
+          }
+          if (data?.success) {
+            form.reset();
+            setSuccess(data?.success);
+          }
+
+          if (data?.twoFactor) {
+            setShowTwoFactor(true);
+          }
+        })
+        .catch(() => setError('Something went wrong!'));
     });
   };
-  // https://youtu.be/1MTyCvS05V4?list=PLcCUfHZZ3WlTJ4bMMZyC7fwnYEZJgICrW&t=17298
   return (
     <CardWrapper
       headerLabel='Welcome back'
