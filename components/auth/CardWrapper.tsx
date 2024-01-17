@@ -5,13 +5,13 @@ import { Header } from '@/components/auth/Header';
 import { Social } from '@/components/auth/Social';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 
-interface CardWrapperProps {
+type CardWrapperProps = {
   children: React.ReactNode;
   headerLabel: string;
   backButtonLabel: string;
   backButtonHref: string;
   showSocial?: boolean;
-}
+};
 
 export const CardWrapper = ({
   children,
