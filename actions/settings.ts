@@ -3,7 +3,6 @@
 import bcrypt from 'bcryptjs';
 import * as z from 'zod';
 
-import { update } from '@/auth';
 import { getUserByEmail, getUserById } from '@/data/user';
 import { currentUser } from '@/lib/auth';
 import { db } from '@/lib/db';
@@ -63,14 +62,14 @@ export const settings = async (values: z.infer<typeof SettingsSchema>) => {
     },
   });
 
-  update({
-    user: {
-      name: updatedUser.name,
-      email: updatedUser.email,
-      isTwoFactorEnabled: updatedUser.isTwoFactorEnabled,
-      role: updatedUser.role,
-    },
-  });
+  // update({
+  //   user: {
+  //     name: updatedUser.name,
+  //     email: updatedUser.email,
+  //     isTwoFactorEnabled: updatedUser.isTwoFactorEnabled,
+  //     role: updatedUser.role,
+  //   },
+  // });
 
   return { success: 'Settings Updated!' };
 };
