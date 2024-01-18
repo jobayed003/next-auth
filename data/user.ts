@@ -16,4 +16,3 @@ export const getUserById = async (id: string) => {
     return null;
   }
 };
-// https://youtu.be/1MTyCvS05V4?list=PLcCUfHZZ3WlTJ4bMMZyC7fwnYEZJgICrW&t=19526
